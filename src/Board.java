@@ -25,6 +25,40 @@ public class Board {
         }
     }
 
+    public void registerHit(String point){
+        int row = Integer.parseInt(point.substring(point.indexOf("(") + 1, point.indexOf(","))) - 1;
+        int column = Integer.parseInt(point.substring(point.indexOf(",") + 1, point.indexOf(")"))) -1;
+        if (checkHit(point)){
+            board[row][column] = "*";
+        } else {
+            board[row][column] = "0";
+        }
+    }
+
+    public boolean checkHit(String point){
+        int row = Integer.parseInt(point.substring(point.indexOf("(") + 1, point.indexOf(","))) - 1;
+        int column = Integer.parseInt(point.substring(point.indexOf(",") + 1, point.indexOf(")"))) -1;
+        if (!board[row][column].equals("~")){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkBoat(int boatNum, int boatLength){
+        int count = 0;
+        for (int row = 0; row < board.length; row++) {
+            for (int column = 0; column < board[row].length; column++) {
+                if(board[row][column].equals("" + boatNum)){
+                    count++;
+                }
+            }
+        }
+        if (count == boatLength){
+            return true;
+        }
+        return false;
+    }
+
     public boolean setUpShip(int length, String startPoint, String endPoint, String direction, String boat) {
         int startRow = Integer.parseInt(startPoint.substring(startPoint.indexOf("(") + 1, startPoint.indexOf(","))) - 1;
         int startColumn = Integer.parseInt(startPoint.substring(startPoint.indexOf(",") + 1, startPoint.indexOf(")"))) -1;
