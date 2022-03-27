@@ -1,14 +1,26 @@
 import java.util.Scanner;
-
+/**
+ * Main Logic for the program
+ * @author Saveliy Mizerovskiy
+ */
 public class BattleShip {
+    /** first player */
     Player player1;
+    /** second player */
     Player player2;
+    /** Represents the status of the game*/
     boolean isRunning = true;
+    /**
+     * Constructor for the game
+     */
     public BattleShip(){}
     Player currentPlayer;
     Player otherPlayer;
     int currentPlayerTurn;
 
+    /**
+     * All the logic for the game
+     */
     public void run(){
         System.out.println("Welcome to The Battle Chips");
         System.out.println("*Definitely NOT Ships*");
@@ -31,8 +43,9 @@ public class BattleShip {
 
 
     }
-
-
+    /**
+     * Prints the menu for the game and interprets the inputs
+     */
     public void menu(){
         int option = 0;
         Scanner scan = new Scanner(System.in);
@@ -128,14 +141,19 @@ public class BattleShip {
         }
 
     }
-
+    /**
+     * Checks if the other player lost yet
+     * @return boolean for true if the player lost
+     */
     public boolean lost(){
         if (otherPlayer.isHasBoat5() && otherPlayer.isHasBoat4() && otherPlayer.isHasBoat3() && otherPlayer.isHasBoat2() && otherPlayer.isHasBoat1()){
             return false;
         }
         return  true;
     }
-
+    /**
+     * Sets up the multiple boards for the game with the chips
+     */
     public void setUp(){
         String startPoint = "";
         String endPoint = "";

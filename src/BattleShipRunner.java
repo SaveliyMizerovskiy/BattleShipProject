@@ -1,3 +1,7 @@
+/**
+ * Runs the program
+ * @author Saveliy Mizerovskiy
+ */
 public class BattleShipRunner {
 
     public static void main(String args[]){
